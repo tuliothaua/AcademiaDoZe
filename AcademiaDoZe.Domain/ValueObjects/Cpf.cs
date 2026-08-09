@@ -1,14 +1,36 @@
 ﻿// Nome: Túlio Thauã Dutra
+using AcademiaDoZe.Domain.Common;
+using System.Linq;
 namespace AcademiaDoZe.Domain.ValueObjects;
 
-// Records facilitam a criação de objetos imutáveis e comparação por valor [5]
 public record Cpf
 {
     public string Valor { get; }
 
-    public Cpf(string valor)
+    // Construtor privado impede o uso direto de 'new Cpf()' fora da classe
+    private Cpf(string valor)
     {
-        // Aqui futuramente você pode adicionar a lógica de validação do CPF [7]
         Valor = valor;
     }
+
+    // Método de Fábrica
+    public static Result<Cpf> Criar(string valor)
+    {
+        if (string.IsNullOrWhiteSpace(valor))
+        {
+            return Result<Cpf>.Failure("Cpf", "CPF_OBRIGATORIO");
+        }
+
+        // Normalização: remove pontos e traços para armazenar apenas dígitos
+        string cpfLimpo = new string(valor.Where(char.IsDigit).ToArray());
+
+        if (cpfLimpo.Length != 11)
+        {
+            return Result<Cpf>.Failure("Cpf", "CPF_DIGITOS_INVALIDOS");
+        }
+
+        return Result<Cpf>.Success(new Cpf(cpfLimpo));
+    }
+
+    public override string ToString() => Valor;
 }
