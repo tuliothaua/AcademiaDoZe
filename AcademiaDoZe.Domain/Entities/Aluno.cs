@@ -1,4 +1,5 @@
-﻿using AcademiaDoZe.Domain.Common;
+﻿// Nome: Túlio Thauã Dutra
+using AcademiaDoZe.Domain.Common;
 using AcademiaDoZe.Domain.ValueObjects;
 
 namespace AcademiaDoZe.Domain.Entities;
