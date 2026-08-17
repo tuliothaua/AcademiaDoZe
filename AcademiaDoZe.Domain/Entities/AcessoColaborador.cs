@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace AcademiaDoZe.Domain.Entities;
 
-public class AcessoColaborador : Entity
+public class AcessoColaborador : Entity, IAggregateRoot
 {
     public Colaborador Colaborador { get; private set; }
     public DateTime DataHora { get; private set; }

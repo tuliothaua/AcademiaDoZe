@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace AcademiaDoZe.Domain.Entities;
 
-public class Matricula : Entity
+public class Matricula : Entity, IAggregateRoot
 {
     public Aluno AlunoMatricula { get; private set; }
     public MatriculaPlano Plano { get; private set; }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace AcademiaDoZe.Domain.Entities;
 
-public class AcessoAluno : Entity
+public class AcessoAluno : Entity, IAggregateRoot
 {
     public Aluno Aluno { get; private set; }
     public DateTime DataHora { get; private set; }
