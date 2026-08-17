@@ -1,10 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AcademiaDoZe.Domain.ValueObjects;
+using Xunit;
 
-namespace AcademiaDoZe.Domain.Tests
+namespace AcademiaDoZe.Domain.Tests;
+
+public class EnderecoTests
 {
-    internal class EnderecoTests
+    [Theory]
+    [InlineData("Rua A, 10")]
+    [InlineData("Avenida Central")]
+    [InlineData("Casa 5")]
+    [InlineData("Rua das Flores")]
+    [InlineData("Praça Principal")]
+    public void DeveCriarEnderecoValido(string valor)
     {
+        var resultado = Endereco.Criar(valor);
+        Assert.True(resultado.IsSuccess);
+        Assert.NotNull(resultado.Value);
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("   ")]
+    public void DeveRecusarEnderecoVazio(string? valor)
+    {
+        var resultado = Endereco.Criar(valor!);
+        Assert.True(resultado.IsFailure);
+        Assert.Contains(resultado.Notifications, n => n.Mensagem == "ENDERECO_OBRIGATORIO");
+    }
+
+    [Fact]
+    public void DeveRemoverEspacosDasExtremidades()
+    {
+        var resultado = Endereco.Criar("  Rua A  ");
+        Assert.Equal("Rua A", resultado.Value!.Valor);
+    }
+
+    [Fact]
+    public void DeveRetornarValorNoToString()
+    {
+        var resultado = Endereco.Criar("Rua A");
+        Assert.Equal("Rua A", resultado.Value!.ToString());
     }
 }
