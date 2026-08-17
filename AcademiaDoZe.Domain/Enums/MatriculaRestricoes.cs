@@ -1,4 +1,8 @@
-﻿[Flags]
+﻿// Nome: Túlio Thauã Dutra
+
+namespace AcademiaDoZe.Domain.Enums;
+
+[Flags]
 public enum MatriculaRestricoes
 {
     None = 0,

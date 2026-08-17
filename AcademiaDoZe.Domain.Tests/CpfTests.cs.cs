@@ -1,4 +1,5 @@
-﻿using AcademiaDoZe.Domain.ValueObjects;
+﻿// Nome: Túlio Thauã Dutra
+using AcademiaDoZe.Domain.ValueObjects;
 
 namespace AcademiaDoZe.Domain.Tests;
 
