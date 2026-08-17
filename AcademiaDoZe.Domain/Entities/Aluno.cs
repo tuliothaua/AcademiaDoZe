@@ -1,74 +1,82 @@
-﻿// Nome: Túlio Thauã Dutra
-using AcademiaDoZe.Domain.Common;
+﻿using AcademiaDoZe.Domain.Common;
 using AcademiaDoZe.Domain.ValueObjects;
-using System.Linq;
 
 namespace AcademiaDoZe.Domain.Entities;
 
-public class Aluno : Pessoa
+public class Aluno : Pessoa, IAggregateRoot
 {
-    // Construtor privado
-    private Aluno(int id, string nome, Cpf cpf, DateOnly dataNascimento, Telefone telefone, Email email, Senha senha, Arquivo foto, Logradouro logradouro, string numero, string complemento)
+    private Aluno(
+        int id,
+        string nome,
+        Cpf cpf,
+        DateOnly dataNascimento,
+        Telefone telefone,
+        Email email,
+        Senha senha,
+        Arquivo foto,
+        Logradouro logradouro,
+        string numero,
+        string complemento)
         : base(id, nome, cpf, dataNascimento, telefone, email, senha, foto, logradouro, numero, complemento)
     {
     }
 
-    // Método de Fábrica para Aluno
-    public static Result<Aluno> Criar(int id, string nome, string cpfStr, DateOnly dataNascimento, string telefoneStr, string emailStr, string senhaStr, Arquivo foto, Logradouro logradouro, string numero, string complemento)
+    public static Result<Aluno> Criar(
+        int id,
+        string nome,
+        string cpfTexto,
+        DateOnly dataNascimento,
+        string telefoneTexto,
+        string emailTexto,
+        string senhaTexto,
+        Arquivo foto,
+        Logradouro logradouro,
+        string numero,
+        string complemento)
     {
         var notifications = new List<Notification>();
 
         if (string.IsNullOrWhiteSpace(nome))
-        {
             notifications.Add(new Notification("Nome", "NOME_OBRIGATORIO"));
-        }
+        else
+            nome = nome.Trim();
 
-        // Validação e criação do Value Object CPF
-        var cpfResult = Cpf.Criar(cpfStr);
+        if (dataNascimento == default)
+            notifications.Add(new Notification("DataNascimento", "DATA_NASCIMENTO_OBRIGATORIO"));
+        else if (dataNascimento > DateOnly.FromDateTime(DateTime.Today.AddYears(-12)))
+            notifications.Add(new Notification("DataNascimento", "DATA_NASCIMENTO_MINIMA_INVALIDA"));
+
+        var cpfResult = Cpf.Criar(cpfTexto);
         if (cpfResult.IsFailure)
-        {
             notifications.AddRange(cpfResult.Notifications);
-        }
 
-        // Validação e criação do Telefone
-        var telResult = Telefone.Criar(telefoneStr);
-        if (telResult.IsFailure)
-        {
-            notifications.AddRange(telResult.Notifications);
-        }
+        var telefoneResult = Telefone.Criar(telefoneTexto);
+        if (telefoneResult.IsFailure)
+            notifications.AddRange(telefoneResult.Notifications);
 
-        // Validação e criação do Email
-        var emailResult = Email.Criar(emailStr);
+        var emailResult = Email.Criar(emailTexto);
         if (emailResult.IsFailure)
-        {
             notifications.AddRange(emailResult.Notifications);
-        }
 
-        // Validação e criação da Senha
-        var senhaResult = Senha.Criar(senhaStr);
+        var senhaResult = Senha.Criar(senhaTexto);
         if (senhaResult.IsFailure)
-        {
             notifications.AddRange(senhaResult.Notifications);
-        }
 
         if (notifications.Count > 0)
-        {
             return Result<Aluno>.Failure(notifications);
-        }
 
         var aluno = new Aluno(
             id,
-            nome.Trim(),
+            nome,
             cpfResult.Value!,
             dataNascimento,
-            telResult.Value!,
+            telefoneResult.Value!,
             emailResult.Value!,
             senhaResult.Value!,
             foto,
             logradouro,
             numero,
-            complemento
-        );
+            complemento);
 
         return Result<Aluno>.Success(aluno);
     }

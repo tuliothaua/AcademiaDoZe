@@ -5,7 +5,7 @@ using AcademiaDoZe.Domain.ValueObjects;
 using System.Collections.Generic;
 namespace AcademiaDoZe.Domain.Entities;
 
-public class Logradouro : Entity
+public class Logradouro : Entity, IAggregateRoot
 {
     public Cep Cep { get; private set; }
     public string Pais { get; private set; }
