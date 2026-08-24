@@ -16,4 +16,7 @@
     <ProjectReference Include="..\AcademiaDoZe.Domain\AcademiaDoZe.Domain.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+	<EmbeddedResource Include="Scripts\*.sql" />
+	</ItemGroup>
 </Project>
