@@ -8,6 +8,9 @@ public record Telefone
 {
     public string Numero { get; }
 
+    // Alias para compatibilidade com outros ValueObjects (ex.: Cpf.Valor)
+    public string Valor => Numero;
+
     private Telefone(string numero)
     {
         Numero = numero;

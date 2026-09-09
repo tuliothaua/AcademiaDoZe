@@ -169,8 +169,7 @@ public class LogradouroRepository : BaseRepository, ILogradouroRepository
             throw new InfrastructureException("CEP_INVALIDO", $"CEP inválido: {cep}");
         }
 
-        // O Result&lt;Cep&gt; expõe Value como Cep?; após IsFailure == false, garantimos não nulo
-        return await ObterPorCep(cepResult.Value!, cancellationToken);
+        return await ObterPorCep(cepResult.Value, cancellationToken);
     }
 
     public async Task<bool> CepJaExiste(Cep cep, int? id = null, CancellationToken cancellationToken = default)
