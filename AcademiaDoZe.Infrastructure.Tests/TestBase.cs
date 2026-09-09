@@ -11,7 +11,7 @@ namespace AcademiaDoZe.Infrastructure.Tests;
 public abstract class TestBase
 {
     // Para mudar o banco que será testado, basta alterar este enum! (DatabaseType.Sqlite, SqlServer ou MySql)
-    private const DatabaseType SelectedDatabaseType = DatabaseType.MySql;
+    private const DatabaseType SelectedDatabaseType = DatabaseType.Sqlite;
 
     protected string ConnectionString { get; }
     protected DatabaseType DatabaseType { get; }

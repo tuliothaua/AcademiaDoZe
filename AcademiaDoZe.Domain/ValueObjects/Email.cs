@@ -8,6 +8,9 @@ public record Email
 {
     public string Endereco { get; }
 
+    // Alias compatível com outros ValueObjects (ex.: Cpf.Valor)
+    public string Valor => Endereco;
+
     private Email(string endereco)
     {
         Endereco = endereco;

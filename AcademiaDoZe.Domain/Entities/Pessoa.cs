@@ -6,6 +6,10 @@ namespace AcademiaDoZe.Domain.Entities;
 public abstract class Pessoa : Entity
 {
     public string NomeCompleto { get; protected set; }
+
+    // Alias compatível com testes e código legado
+    public string Nome => NomeCompleto;
+
     public Cpf Cpf { get; protected set; }
     public DateOnly DataNascimento { get; protected set; }
     public Telefone Telefone { get; protected set; }
@@ -13,6 +17,10 @@ public abstract class Pessoa : Entity
     public Senha Senha { get; protected set; }
     public Arquivo Foto { get; protected set; }
     public Logradouro Logradouro { get; protected set; }
+
+    // Alias para compatibilidade com nomes usados nos testes
+    public Logradouro Endereco => Logradouro;
+
     public string Numero { get; protected set; }
     public string Complemento { get; protected set; }
 
