@@ -1,5 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
-using AcademiaDoZe.Infrastructure.Data;
+﻿using AcademiaDoZe.Infrastructure.Data;
 using AcademiaDoZe.Infrastructure.Exceptions;
 using System.Data;
 using System.Data.Common;
@@ -8,29 +7,50 @@ namespace AcademiaDoZe.Infrastructure.Repositories;
 
 public abstract class BaseRepository : IDisposable, IAsyncDisposable
 {
-    protected readonly string _connectionString;
-    protected readonly DatabaseType _databaseType;
+    private readonly Func<(string ConnectionString, DatabaseType DatabaseType)> _configurationProvider;
+    private string? _activeConnectionString;
+    private DatabaseType? _activeDatabaseType;
     private DbConnection? _connection;
     private bool _disposed;
 
+    protected string _connectionString => _configurationProvider().ConnectionString;
+    protected DatabaseType _databaseType => _configurationProvider().DatabaseType;
+
     protected BaseRepository(string connectionString, DatabaseType databaseType)
+        : this(() => (connectionString, databaseType))
     {
-        _connectionString = connectionString ?? throw new InfrastructureException("STRING_CONEXAO_NULA", $"String de conexão não pode ser nula: {nameof(connectionString)}");
-        _databaseType = databaseType;
+    }
+
+    protected BaseRepository(Func<(string ConnectionString, DatabaseType DatabaseType)> configurationProvider)
+    {
+        _configurationProvider = configurationProvider
+            ?? throw new ArgumentNullException(nameof(configurationProvider));
     }
 
     protected virtual async Task<DbConnection> GetOpenConnectionAsync(CancellationToken cancellationToken = default)
     {
         ObjectDisposedException.ThrowIf(_disposed, this);
+        var (connectionString, databaseType) = _configurationProvider();
+        if (string.IsNullOrWhiteSpace(connectionString))
+            throw new InfrastructureException("STRING_CONEXAO_VAZIA", "String de conexão não pode ser vazia.");
+
         try
         {
-            // Cria o banco e as tabelas do banco de dados se não existirem
-            await DbInitializer.InicializarAsync(_connectionString, _databaseType, cancellationToken);
+            if (_connection is not null &&
+                (_activeConnectionString != connectionString || _activeDatabaseType != databaseType))
+            {
+                await _connection.DisposeAsync();
+                _connection = null;
+            }
+
+            await DbInitializer.InicializarAsync(connectionString, databaseType, cancellationToken);
 
             if (_connection == null)
             {
-                _connection = DbProvider.CreateConnection(_connectionString, _databaseType);
+                _connection = DbProvider.CreateConnection(connectionString, databaseType);
                 await _connection.OpenAsync(cancellationToken);
+                _activeConnectionString = connectionString;
+                _activeDatabaseType = databaseType;
             }
             else if (_connection.State == ConnectionState.Broken)
             {

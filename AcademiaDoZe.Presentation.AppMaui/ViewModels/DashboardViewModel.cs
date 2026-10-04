@@ -70,5 +70,5 @@ public sealed class DashboardViewModel : BaseViewModel
     }
 
     private static async Task OpenLogradourosAsync() =>
-        await Shell.Current.GoToAsync("//logradouros/logradouros-tab/logradouros-page");
+        await Shell.Current.GoToAsync("//logradouros");
 }

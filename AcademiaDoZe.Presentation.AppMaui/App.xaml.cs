@@ -1,13 +1,18 @@
 using AcademiaDoZe.Application.DependencyInjection;
 using AcademiaDoZe.Infrastructure.Data;
+using AcademiaDoZe.Presentation.AppMaui.Message;
+using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Storage;
 
 namespace AcademiaDoZe.Presentation.AppMaui;
 
-public partial class App : Microsoft.Maui.Controls.Application
+public partial class App : Microsoft.Maui.Controls.Application,
+    IRecipient<TemaPreferencesUpdatedMessage>,
+    IRecipient<BancoPreferencesUpdatedMessage>
 {
     private readonly IServiceProvider _services;
     private readonly RepositoryConfig _repositoryConfig;
@@ -17,7 +22,42 @@ public partial class App : Microsoft.Maui.Controls.Application
         InitializeComponent();
         _services = services;
         _repositoryConfig = repositoryConfig;
+        UserAppTheme = LerTema(Preferences.Default.Get("Tema", "system"));
+        WeakReferenceMessenger.Default.Register<TemaPreferencesUpdatedMessage>(this);
     }
+
+    public void Receive(TemaPreferencesUpdatedMessage message)
+    {
+        MainThread.BeginInvokeOnMainThread(() => UserAppTheme = LerTema(message.Value));
+    }
+
+    public void Receive(BancoPreferencesUpdatedMessage message)
+    {
+        _ = ConfirmarNovaConexaoAsync();
+    }
+
+    private async Task ConfirmarNovaConexaoAsync()
+    {
+        try
+        {
+            using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(20));
+            await DbInitializer.InicializarAsync(
+                _repositoryConfig.ConnectionString,
+                _repositoryConfig.DatabaseType,
+                timeout.Token);
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Não foi possível confirmar a conexão atualizada: {ex.Message}");
+        }
+    }
+
+    private static AppTheme LerTema(string tema) => tema switch
+    {
+        "light" => AppTheme.Light,
+        "dark" => AppTheme.Dark,
+        _ => AppTheme.Unspecified
+    };
 
     protected override Window CreateWindow(IActivationState? activationState)
     {
@@ -73,6 +113,7 @@ public partial class App : Microsoft.Maui.Controls.Application
 
     private ContentPage CreateErrorPage(Window window, Exception exception)
     {
+        System.Diagnostics.Debug.WriteLine($"Falha ao inicializar banco: {exception}");
         var retryButton = new Button
         {
             Text = "Tentar novamente",
@@ -105,7 +146,7 @@ public partial class App : Microsoft.Maui.Controls.Application
                     },
                     new Label
                     {
-                        Text = exception.Message,
+                        Text = "Confira as configurações do banco e a disponibilidade do servidor.",
                         FontSize = 14,
                         TextColor = Color.FromArgb("#667085")
                     },

@@ -12,10 +12,10 @@ public static class ApplicationDependencyInjection
     {
         ArgumentNullException.ThrowIfNull(config);
         services.AddSingleton(config);
-        services.AddTransient<ILogradouroRepository>(sp => new LogradouroRepository(config.ConnectionString, config.DatabaseType));
-        services.AddTransient<IAlunoRepository>(sp => new AlunoRepository(config.ConnectionString, config.DatabaseType));
-        services.AddTransient<IColaboradorRepository>(sp => new ColaboradorRepository(config.ConnectionString, config.DatabaseType));
-        services.AddTransient<IMatriculaRepository>(sp => new MatriculaRepository(config.ConnectionString, config.DatabaseType));
+        services.AddTransient<ILogradouroRepository>(sp => new LogradouroRepository(() => (config.ConnectionString, config.DatabaseType)));
+        services.AddTransient<IAlunoRepository>(sp => new AlunoRepository(() => (config.ConnectionString, config.DatabaseType)));
+        services.AddTransient<IColaboradorRepository>(sp => new ColaboradorRepository(() => (config.ConnectionString, config.DatabaseType)));
+        services.AddTransient<IMatriculaRepository>(sp => new MatriculaRepository(() => (config.ConnectionString, config.DatabaseType)));
         services.AddTransient<ILogradouroService, LogradouroService>();
         services.AddTransient<IAlunoService, AlunoService>();
         services.AddTransient<IColaboradorService, ColaboradorService>();

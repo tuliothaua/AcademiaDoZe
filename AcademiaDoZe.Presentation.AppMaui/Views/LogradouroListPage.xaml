@@ -4,45 +4,66 @@
              x:Class="AcademiaDoZe.Presentation.AppMaui.Views.LogradouroListPage"
              x:Name="RootPage"
              Title="Logradouros"
-             BackgroundColor="#F4F7FB">
+             BackgroundColor="{AppThemeBinding Light=#F4F7FB, Dark=#101923}">
     <Grid Padding="22" RowDefinitions="Auto,Auto,*" RowSpacing="14">
         <VerticalStackLayout Grid.Row="0" Spacing="4">
             <Label Text="CADASTROS" FontSize="13" FontAttributes="Bold" TextColor="#149A98" />
-            <Label Text="Logradouros" FontSize="29" FontAttributes="Bold" TextColor="#173653" />
-            <Label Text="Consulte, pesquise e mantenha os endereços da academia." FontSize="14" TextColor="#667085" />
+            <Label Text="Logradouros" FontSize="29" FontAttributes="Bold"
+                   TextColor="{AppThemeBinding Light={StaticResource Black}, Dark=#F1F5F9}" />
+            <Label Text="Consulte, pesquise e mantenha os endereços da academia." FontSize="14"
+                   TextColor="{AppThemeBinding Light={StaticResource Black}, Dark=#A9B4C2}" />
         </VerticalStackLayout>
 
         <Grid Grid.Row="1" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8">
             <Entry Grid.Column="0" Text="{Binding SearchText}" Placeholder="Buscar por rua, bairro, cidade ou CEP"
                    ReturnType="Search" ReturnCommand="{Binding SearchCommand}" ClearButtonVisibility="WhileEditing"
-                   BackgroundColor="White" TextColor="#173653" PlaceholderColor="#667085" />
+                   BackgroundColor="{AppThemeBinding Light=White, Dark=#182534}"
+                   TextColor="{AppThemeBinding Light={StaticResource Black}, Dark=#F1F5F9}"
+                   PlaceholderColor="{AppThemeBinding Light=#667085, Dark=#A9B4C2}"
+                   VerticalOptions="Center" />
             <Button Grid.Column="1" Text="Buscar" Command="{Binding SearchCommand}"
-                    BackgroundColor="#173653" TextColor="White" CornerRadius="12" />
-            <Button Grid.Column="2" Text="+ Novo" Command="{Binding AddCommand}"
-                    BackgroundColor="#149A98" TextColor="White" CornerRadius="12" />
+                    BackgroundColor="#173653" TextColor="{AppThemeBinding Light=White, Dark=White}" CornerRadius="10"
+                    Padding="10,6" HeightRequest="40" MinimumWidthRequest="90" FontSize="14" VerticalOptions="Center" />
+            <Button Grid.Column="2" Text="Novo" Command="{Binding AddCommand}"
+                    BackgroundColor="#149A98" TextColor="{AppThemeBinding Light=White, Dark=White}" CornerRadius="10"
+                    Padding="10,6" HeightRequest="40" MinimumWidthRequest="90" FontSize="14" VerticalOptions="Center" />
         </Grid>
 
         <CollectionView Grid.Row="2" ItemsSource="{Binding Logradouros}" SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="12" />
+            </CollectionView.ItemsLayout>
             <CollectionView.EmptyView>
                 <VerticalStackLayout Padding="20" Spacing="8" VerticalOptions="Center" HorizontalOptions="Center">
-                    <Label Text="Nenhum Logradouro encontrado" FontSize="18" FontAttributes="Bold" TextColor="#173653" HorizontalTextAlignment="Center" />
-                    <Label Text="Cadastre um endereço ou altere o termo da busca." FontSize="14" TextColor="#667085" HorizontalTextAlignment="Center" />
+                    <Label Text="Nenhum logradouro encontrado" FontSize="18" FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light={StaticResource Black}, Dark=#F1F5F9}" HorizontalTextAlignment="Center" />
+                    <Label Text="Cadastre um endereço ou altere o termo da busca." FontSize="14"
+                           TextColor="{AppThemeBinding Light={StaticResource Black}, Dark=#A9B4C2}" HorizontalTextAlignment="Center" />
                 </VerticalStackLayout>
             </CollectionView.EmptyView>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Border Margin="0,0,0,10" Padding="16" BackgroundColor="White" Stroke="#E5EAF0" StrokeShape="RoundRectangle 16">
+                    <Border Margin="0,0,0,10" Padding="16"
+                            BackgroundColor="{AppThemeBinding Light=White, Dark=#182534}"
+                            Stroke="{AppThemeBinding Light=#E5EAF0, Dark=#29394B}" StrokeShape="RoundRectangle 16">
                         <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnSpacing="14" RowSpacing="5">
-                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Nome}" FontSize="17" FontAttributes="Bold" TextColor="#173653" />
-                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding Bairro}" FontSize="14" TextColor="#344054" />
-                            <Label Grid.Row="2" Grid.Column="0" Text="{Binding Cidade}" FontSize="13" TextColor="#667085" />
-                            <Label Grid.Row="3" Grid.Column="0" Text="{Binding Estado}" FontSize="13" TextColor="#667085" />
-                            <Label Grid.Row="4" Grid.Column="0" Text="{Binding Cep}" FontSize="13" TextColor="#667085" />
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Nome}" FontSize="17" FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light={StaticResource Black}, Dark=#F1F5F9}" />
+                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding Bairro}" FontSize="14"
+                                   TextColor="{AppThemeBinding Light={StaticResource Black}, Dark=#D0D8E2}" />
+                            <Label Grid.Row="2" Grid.Column="0" Text="{Binding Cidade}" FontSize="13"
+                                   TextColor="{AppThemeBinding Light={StaticResource Black}, Dark=#A9B4C2}" />
+                            <Label Grid.Row="3" Grid.Column="0" Text="{Binding Estado}" FontSize="13"
+                                   TextColor="{AppThemeBinding Light={StaticResource Black}, Dark=#A9B4C2}" />
+                            <Label Grid.Row="4" Grid.Column="0" Text="{Binding Cep}" FontSize="13"
+                                   TextColor="{AppThemeBinding Light={StaticResource Black}, Dark=#A9B4C2}" />
                             <VerticalStackLayout Grid.Row="0" Grid.RowSpan="5" Grid.Column="1" Spacing="7" VerticalOptions="Center">
                                 <Button Text="Editar" Command="{Binding Source={x:Reference RootPage}, Path=BindingContext.EditCommand}"
-                                        CommandParameter="{Binding .}" BackgroundColor="#EAF4F4" TextColor="#173653" CornerRadius="10" />
+                                        CommandParameter="{Binding .}" BackgroundColor="{AppThemeBinding Light=#EAF4F4, Dark=#213A45}"
+                                        TextColor="{AppThemeBinding Light={StaticResource Black}, Dark=#F1F5F9}" CornerRadius="10" />
                                 <Button Text="Excluir" Command="{Binding Source={x:Reference RootPage}, Path=BindingContext.DeleteCommand}"
-                                        CommandParameter="{Binding .}" BackgroundColor="#FFF0EF" TextColor="#A7352A" CornerRadius="10" />
+                                        CommandParameter="{Binding .}" BackgroundColor="{AppThemeBinding Light=#FFF0EF, Dark=#442B2A}"
+                                        TextColor="{AppThemeBinding Light=#A7352A, Dark=#FFB4A9}" CornerRadius="10" />
                             </VerticalStackLayout>
                         </Grid>
                     </Border>

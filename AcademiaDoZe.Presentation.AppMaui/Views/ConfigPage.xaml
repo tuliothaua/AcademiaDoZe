@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AcademiaDoZe.Presentation.AppMaui.Views.ConfigPage"
+             Title="Configurações"
+             BackgroundColor="{AppThemeBinding Light=#F4F7FB, Dark=#101923}">
+    <ScrollView>
+        <VerticalStackLayout Padding="22" Spacing="18">
+            <VerticalStackLayout Spacing="4">
+                <Label Text="PREFERÊNCIAS" FontSize="13" FontAttributes="Bold" TextColor="#149A98" />
+                <Label Text="Configurações" FontSize="29" FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light=#173653, Dark=#F1F5F9}" />
+                <Label Text="Personalize a aparência e a conexão utilizada pela Academia do Zé."
+                       FontSize="14" TextColor="{AppThemeBinding Light=#667085, Dark=#A9B4C2}" />
+            </VerticalStackLayout>
+
+            <Border Padding="18" BackgroundColor="{AppThemeBinding Light=White, Dark=#182534}"
+                    Stroke="{AppThemeBinding Light=#E5EAF0, Dark=#29394B}" StrokeShape="RoundRectangle 18">
+                <VerticalStackLayout Spacing="12">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                        <Image Source="palette.png" WidthRequest="26" HeightRequest="26" VerticalOptions="Center" />
+                        <Label Grid.Column="1" Text="Aparência" FontSize="19" FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light=#173653, Dark=#F1F5F9}" VerticalOptions="Center" />
+                    </Grid>
+                    <Label Text="Escolha o tema da aplicação. A mudança é aplicada imediatamente."
+                           FontSize="13" TextColor="{AppThemeBinding Light=#667085, Dark=#A9B4C2}" />
+                    <Picker x:Name="TemaPicker" Title="Selecione um tema" />
+                    <Button Text="Aplicar tema" ImageSource="palette.png" Clicked="OnSalvarTemaClicked"
+                            BackgroundColor="#149A98" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark=White}" FontAttributes="Bold"
+                            CornerRadius="12" HeightRequest="50" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Padding="18" BackgroundColor="{AppThemeBinding Light=White, Dark=#182534}"
+                    Stroke="{AppThemeBinding Light=#E5EAF0, Dark=#29394B}" StrokeShape="RoundRectangle 18">
+                <VerticalStackLayout Spacing="12">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                        <Image Source="database.png" WidthRequest="26" HeightRequest="26" VerticalOptions="Center" />
+                        <Label Grid.Column="1" Text="Banco de dados" FontSize="19" FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light=#173653, Dark=#F1F5F9}" VerticalOptions="Center" />
+                    </Grid>
+                    <Label Text="Os dados são validados e a conexão atualizada antes de salvar as preferências."
+                           FontSize="13" TextColor="{AppThemeBinding Light=#667085, Dark=#A9B4C2}" />
+                    <Label Text="Tipo de banco" FontSize="13" FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#344054, Dark=#D0D8E2}" />
+                    <Picker x:Name="BancoPicker" Title="Selecione o banco" SelectedIndexChanged="OnTipoBancoChanged" />
+
+                    <Label x:Name="SqliteInfo" IsVisible="False"
+                           Text="SQLite é local e não requer servidor, usuário ou senha. Informe um caminho opcional para o arquivo."
+                           FontSize="13" TextColor="{AppThemeBinding Light=#667085, Dark=#A9B4C2}" />
+                    <Entry x:Name="SqlitePathEntry" IsVisible="False" Placeholder="Caminho do arquivo SQLite"
+                           ClearButtonVisibility="WhileEditing" />
+
+                    <VerticalStackLayout x:Name="BancoRemotoFields" IsVisible="False" Spacing="10">
+                        <Grid ColumnDefinitions="2*,*" ColumnSpacing="10">
+                            <Entry x:Name="ServidorEntry" Grid.Column="0" Placeholder="Servidor / host" />
+                            <Entry x:Name="PortaEntry" Grid.Column="1" Placeholder="Porta" Keyboard="Numeric" />
+                        </Grid>
+                        <Entry x:Name="NomeBancoEntry" Placeholder="Nome do banco de dados" />
+                        <Entry x:Name="UsuarioEntry" Placeholder="Usuário" />
+                        <Entry x:Name="SenhaEntry" Placeholder="Senha" IsPassword="True" />
+                    </VerticalStackLayout>
+
+                    <Button Text="Testar e salvar conexão" ImageSource="database.png" Clicked="OnSalvarBancoClicked"
+                            BackgroundColor="#173653" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark=White}" FontAttributes="Bold"
+                            CornerRadius="12" HeightRequest="50" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Voltar ao painel" ImageSource="dashboard.png" Clicked="OnCancelarClicked"
+                    BackgroundColor="Transparent" TextColor="{AppThemeBinding Light=#173653, Dark=#F1F5F9}"
+                    BorderColor="{AppThemeBinding Light=#D5DEE8, Dark=#34465A}" BorderWidth="1"
+                    CornerRadius="12" HeightRequest="48" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -16,6 +16,11 @@ public class AlunoRepository : BaseRepository, IAlunoRepository
     {
     }
 
+    public AlunoRepository(Func<(string ConnectionString, DatabaseType DatabaseType)> configurationProvider)
+        : base(configurationProvider)
+    {
+    }
+
     private static string BaseSelectQuery => @"
         SELECT
             a.id_aluno, a.cpf, a.nome, a.nascimento, a.telefone, a.email,

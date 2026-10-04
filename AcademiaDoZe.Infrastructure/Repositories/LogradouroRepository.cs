@@ -15,6 +15,11 @@ public class LogradouroRepository : BaseRepository, ILogradouroRepository
     {
     }
 
+    public LogradouroRepository(Func<(string ConnectionString, DatabaseType DatabaseType)> configurationProvider)
+        : base(configurationProvider)
+    {
+    }
+
     private static string BaseSelectQuery => "SELECT id_logradouro, cep, nome, bairro, cidade, estado, pais FROM tb_logradouro";
 
     public async Task<Logradouro?> ObterPorId(int id, CancellationToken cancellationToken = default)
