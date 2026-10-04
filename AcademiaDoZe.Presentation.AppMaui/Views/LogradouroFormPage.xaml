@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AcademiaDoZe.Presentation.AppMaui.Views.LogradouroFormPage"
+             Title="Logradouro"
+             BackgroundColor="#F4F7FB">
+    <ScrollView>
+        <VerticalStackLayout Padding="22" Spacing="14">
+            <VerticalStackLayout Spacing="4">
+                <Label Text="ENDEREÇO" FontSize="13" FontAttributes="Bold" TextColor="#149A98" />
+                <Label Text="{Binding Title}" FontSize="29" FontAttributes="Bold" TextColor="#173653" />
+                <Label Text="Preencha os dados do endereço. Os campos são validados antes de salvar." FontSize="14" TextColor="#667085" />
+            </VerticalStackLayout>
+
+            <Border Padding="18" BackgroundColor="White" Stroke="#E5EAF0" StrokeShape="RoundRectangle 18">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="CEP" FontSize="13" FontAttributes="Bold" TextColor="#344054" />
+                    <Entry Text="{Binding Cep}" Placeholder="Ex.: 88000000" Keyboard="Numeric" MaxLength="9"
+                           TextColor="#000000" PlaceholderColor="#667085" />
+                    <Label Text="Nome do Logradouro" FontSize="13" FontAttributes="Bold" TextColor="#344054" />
+                    <Entry Text="{Binding Nome}" Placeholder="Ex.: Rua Túlio Thauã Dutra"
+                           TextColor="#000000" PlaceholderColor="#667085" />
+                    <Label Text="Bairro" FontSize="13" FontAttributes="Bold" TextColor="#344054" />
+                    <Entry Text="{Binding Bairro}" Placeholder="Informe o bairro"
+                           TextColor="#000000" PlaceholderColor="#667085" />
+                    <Label Text="Cidade" FontSize="13" FontAttributes="Bold" TextColor="#344054" />
+                    <Entry Text="{Binding Cidade}" Placeholder="Informe a cidade"
+                           TextColor="#000000" PlaceholderColor="#667085" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="6">
+                            <Label Text="Estado (UF)" FontSize="13" FontAttributes="Bold" TextColor="#344054" />
+                            <Entry Text="{Binding Estado}" Placeholder="SC" MaxLength="2" CharacterCasing="Upper"
+                                   TextColor="#000000" PlaceholderColor="#667085" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="6">
+                            <Label Text="País" FontSize="13" FontAttributes="Bold" TextColor="#344054" />
+                            <Entry Text="{Binding Pais}" Placeholder="Brasil"
+                                   TextColor="#000000" PlaceholderColor="#667085" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Salvar Logradouro" Command="{Binding SaveCommand}"
+                    BackgroundColor="#149A98" TextColor="White" FontSize="16" FontAttributes="Bold"
+                    CornerRadius="14" HeightRequest="54" />
+            <Button Text="Cancelar" Command="{Binding CancelCommand}"
+                    BackgroundColor="White" TextColor="#173653" BorderColor="#D5DEE8" BorderWidth="1"
+                    CornerRadius="14" HeightRequest="48" />
+            <Label Text="Para a demonstração da atividade, cadastre um endereço com seu nome completo no campo Nome do Logradouro."
+                   FontSize="12" TextColor="#667085" HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

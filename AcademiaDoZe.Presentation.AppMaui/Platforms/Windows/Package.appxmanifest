@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+         xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+         IgnorableNamespaces="uap">
+  <Identity Name="com.tulio.academiadoze" Publisher="CN=TulioThauaDutra" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>Academia do Zé</DisplayName>
+    <PublisherDisplayName>Túlio Thauã Dutra</PublisherDisplayName>
+    <Logo>appicon.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.26100.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
+      <uap:VisualElements DisplayName="Academia do Zé" Description="Sistema de gestão da Academia do Zé"
+                          Square150x150Logo="appicon.png" Square44x44Logo="appicon.png" BackgroundColor="#173653" />
+    </Application>
+  </Applications>
+</Package>
