@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AcademiaDoZe.Presentation.AppMaui.Views.DashboardPage"
+             Title="Dashboard"
+             BackgroundColor="#F4F7FB">
+    <Grid Padding="22" RowDefinitions="Auto,*" RowSpacing="18">
+        <VerticalStackLayout Grid.Row="0" Spacing="4">
+            <Label Text="ACADEMIA DO ZÉ" FontSize="13" FontAttributes="Bold" TextColor="#149A98" />
+            <Label Text="Painel de controle" FontSize="30" FontAttributes="Bold" TextColor="#173653" />
+            <Label Text="Resumo dos cadastros e acesso rápido às funcionalidades." FontSize="14" TextColor="#667085" />
+        </VerticalStackLayout>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="16">
+                <Border Padding="14" BackgroundColor="White" Stroke="#E5EAF0" StrokeShape="RoundRectangle 20">
+                    <Grid ColumnDefinitions="150,*" ColumnSpacing="16">
+                        <Image Grid.Column="0" Source="tuliologo.png" WidthRequest="145" HeightRequest="145" Aspect="AspectFit" />
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="8">
+                            <Label Text="Bem-vindo, Túlio!" FontSize="22" FontAttributes="Bold" TextColor="#173653" />
+                            <Label Text="Sistema de gestão da Academia do Zé" FontSize="14" TextColor="#667085" />
+                            <Label Text="Acompanhe os cadastros e acesse a área de Logradouros." FontSize="13" TextColor="#667085" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                    <Border Grid.Row="0" Grid.Column="0" Padding="16" BackgroundColor="White" Stroke="#E5EAF0" StrokeShape="RoundRectangle 16">
+                        <VerticalStackLayout Spacing="4"><Label Text="Logradouros" FontSize="13" TextColor="#667085" /><Label Text="{Binding TotalLogradouros}" FontSize="30" FontAttributes="Bold" TextColor="#149A98" /></VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Row="0" Grid.Column="1" Padding="16" BackgroundColor="White" Stroke="#E5EAF0" StrokeShape="RoundRectangle 16">
+                        <VerticalStackLayout Spacing="4"><Label Text="Alunos" FontSize="13" TextColor="#667085" /><Label Text="{Binding TotalAlunos}" FontSize="30" FontAttributes="Bold" TextColor="#149A98" /></VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="0" Padding="16" BackgroundColor="White" Stroke="#E5EAF0" StrokeShape="RoundRectangle 16">
+                        <VerticalStackLayout Spacing="4"><Label Text="Colaboradores" FontSize="13" TextColor="#667085" /><Label Text="{Binding TotalColaboradores}" FontSize="30" FontAttributes="Bold" TextColor="#149A98" /></VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="1" Padding="16" BackgroundColor="White" Stroke="#E5EAF0" StrokeShape="RoundRectangle 16">
+                        <VerticalStackLayout Spacing="4"><Label Text="Matrículas" FontSize="13" TextColor="#667085" /><Label Text="{Binding TotalMatriculas}" FontSize="30" FontAttributes="Bold" TextColor="#149A98" /></VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <Button Text="Abrir Logradouros" Command="{Binding OpenLogradourosCommand}"
+                        BackgroundColor="#149A98" TextColor="White" FontSize="16" FontAttributes="Bold"
+                        CornerRadius="14" HeightRequest="54" />
+                <Button Text="Atualizar Dashboard" Command="{Binding LoadCommand}"
+                        BackgroundColor="White" TextColor="#173653" BorderColor="#D5DEE8" BorderWidth="1"
+                        FontSize="14" CornerRadius="14" HeightRequest="48" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
