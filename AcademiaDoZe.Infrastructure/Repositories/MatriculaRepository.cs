@@ -17,6 +17,11 @@ public class MatriculaRepository : BaseRepository, IMatriculaRepository
     {
     }
 
+    public MatriculaRepository(Func<(string ConnectionString, DatabaseType DatabaseType)> configurationProvider)
+        : base(configurationProvider)
+    {
+    }
+
     private static string BaseSelectQuery => @"
         SELECT
             m.id_matricula, m.aluno_id, m.plano, m.data_inicio, m.data_fim,

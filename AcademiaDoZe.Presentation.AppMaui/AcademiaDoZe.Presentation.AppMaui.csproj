@@ -7,7 +7,7 @@
     <SingleProject>true</SingleProject>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <ApplicationTitle>Academia do Zé</ApplicationTitle>
+    <ApplicationTitle>Academia do Zé - Gestão</ApplicationTitle>
     <ApplicationId>com.tulio.academiadoze</ApplicationId>
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     <ApplicationVersion>1</ApplicationVersion>
@@ -31,10 +31,17 @@
     <MauiIcon Include="Resources\AppIcon\appicon.svg" />
     <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#F4F7FB" BaseSize="256,256" />
     <MauiImage Include="Resources\Images\tuliologo.png" />
+    <MauiImage Include="Resources\Images\dashboard.png" />
+    <MauiImage Include="Resources\Images\location.png" />
+    <MauiImage Include="Resources\Images\settings.png" />
+    <MauiImage Include="Resources\Images\palette.png" />
+    <MauiImage Include="Resources\Images\database.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
   </ItemGroup>
 
   <ItemGroup>

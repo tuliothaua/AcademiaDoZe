@@ -17,6 +17,11 @@ public class ColaboradorRepository : BaseRepository, IColaboradorRepository
     {
     }
 
+    public ColaboradorRepository(Func<(string ConnectionString, DatabaseType DatabaseType)> configurationProvider)
+        : base(configurationProvider)
+    {
+    }
+
     private static string BaseSelectQuery => @"
         SELECT
             c.id_colaborador, c.cpf, c.nome, c.nascimento, c.telefone, c.email,

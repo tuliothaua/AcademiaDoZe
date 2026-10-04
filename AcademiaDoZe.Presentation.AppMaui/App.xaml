@@ -8,6 +8,40 @@
             <Color x:Key="BrandNavy">#173653</Color>
             <Color x:Key="BrandTeal">#149A98</Color>
             <Color x:Key="MutedText">#667085</Color>
+            <Color x:Key="Black">#000000</Color>
+
+            <!-- Global styles to ensure correct text color in Light/Dark themes -->
+            <Style TargetType="Shell">
+                <Setter Property="ForegroundColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark=White}" />
+                <Setter Property="TitleColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark=White}" />
+            </Style>
+
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{AppThemeBinding Light=White, Dark=#173653}" />
+                <Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark=White}" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark=White}" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark=White}" />
+            </Style>
+
+            <Style TargetType="Picker">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark=White}" />
+                <Setter Property="TitleColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark=White}" />
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark=White}" />
+                <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light=#94A3B8, Dark=#9FB0C6}" />
+            </Style>
+
+            <Style TargetType="RadioButton">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark=White}" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
