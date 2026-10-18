@@ -77,3 +77,5 @@ public static class MappingExtensions
         return result.IsSuccess ? result.Value! : throw new ArgumentException(string.Join(", ", result.Notifications.Select(x => x.Mensagem)));
     }
 }
+
+//Aluno: Túlio Thauã Dutra

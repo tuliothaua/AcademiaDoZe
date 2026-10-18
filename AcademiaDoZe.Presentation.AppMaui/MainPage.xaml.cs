@@ -1,4 +1,4 @@
-﻿namespace AcademiaDoZe.Presentation.AppMaui
+namespace AcademiaDoZe.Presentation.AppMaui
 {
     public partial class MainPage : ContentPage
     {
@@ -22,3 +22,5 @@
         }
     }
 }
+
+//Aluno: Túlio Thauã Dutra

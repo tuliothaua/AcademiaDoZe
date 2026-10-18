@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.Common;
 using System.Linq;
 namespace AcademiaDoZe.Domain.ValueObjects;
@@ -34,3 +34,5 @@ public record Cpf
 
     public override string ToString() => Valor;
 }
+
+//Aluno: Túlio Thauã Dutra

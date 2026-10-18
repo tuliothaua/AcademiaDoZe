@@ -156,3 +156,5 @@ public partial class App : Microsoft.Maui.Controls.Application,
         };
     }
 }
+
+//Aluno: Túlio Thauã Dutra

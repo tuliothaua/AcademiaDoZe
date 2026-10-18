@@ -54,3 +54,5 @@ public sealed class MatriculaService : IMatriculaService
     public async Task<IEnumerable<MatriculaDto>> ObterPorAlunoAsync(int alunoId, CancellationToken cancellationToken = default) =>
         (await _repository.ObterPorAlunoAsync(alunoId, cancellationToken)).Select(x => x.ToDto()).ToList();
 }
+
+//Aluno: Túlio Thauã Dutra

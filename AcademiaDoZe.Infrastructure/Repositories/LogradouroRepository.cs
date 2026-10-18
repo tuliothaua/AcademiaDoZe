@@ -174,7 +174,7 @@ public class LogradouroRepository : BaseRepository, ILogradouroRepository
             throw new InfrastructureException("CEP_INVALIDO", $"CEP inválido: {cep}");
         }
 
-        return await ObterPorCep(cepResult.Value, cancellationToken);
+        return await ObterPorCep(cepResult.Value!, cancellationToken);
     }
 
     public async Task<bool> CepJaExiste(Cep cep, int? id = null, CancellationToken cancellationToken = default)
@@ -268,3 +268,5 @@ public class LogradouroRepository : BaseRepository, ILogradouroRepository
         }
     }
 }
+
+//Aluno: Túlio Thauã Dutra

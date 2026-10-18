@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.Entities;
 using AcademiaDoZe.Domain.Enums;
 using Xunit;
@@ -78,3 +78,5 @@ public class ColaboradorTests
         Assert.Contains(resultado.Notifications, n => n.Mensagem == "SENHA_MINIMA_6");
     }
 }
+
+//Aluno: Túlio Thauã Dutra

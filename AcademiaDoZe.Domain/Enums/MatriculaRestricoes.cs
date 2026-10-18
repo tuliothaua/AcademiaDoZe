@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 
 namespace AcademiaDoZe.Domain.Enums;
 
@@ -13,3 +13,5 @@ public enum MatriculaRestricoes
     ProblemasRespiratorios = 16,
     RemedioContinuo = 32
 }
+
+//Aluno: Túlio Thauã Dutra

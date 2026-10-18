@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.Common;
 using System.Linq;
 using Xunit;
@@ -53,3 +53,5 @@ public class ResultTests
         Assert.Equal(2, resultado.Notifications.Count);
     }
 }
+
+//Aluno: Túlio Thauã Dutra

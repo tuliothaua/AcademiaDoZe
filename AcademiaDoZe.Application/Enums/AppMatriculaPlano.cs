@@ -9,3 +9,5 @@ public enum AppMatriculaPlano
     [Display(Name = "Semestral")] Semestral = 2,
     [Display(Name = "Anual")] Anual = 3
 }
+
+//Aluno: Túlio Thauã Dutra

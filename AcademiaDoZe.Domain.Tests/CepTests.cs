@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.ValueObjects;
 using Xunit;
 
@@ -50,3 +50,5 @@ public class CepTests
         Assert.Equal("12345678", resultado.Value!.ToString());
     }
 }
+
+//Aluno: Túlio Thauã Dutra

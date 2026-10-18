@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 namespace AcademiaDoZe.Domain.Enums;
 public enum ColaboradorTipo
 {
@@ -6,3 +6,5 @@ public enum ColaboradorTipo
     Atendente = 1,
     Instrutor = 2
 }
+
+//Aluno: Túlio Thauã Dutra

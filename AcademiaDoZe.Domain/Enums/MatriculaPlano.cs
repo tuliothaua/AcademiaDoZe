@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 namespace AcademiaDoZe.Domain.Enums;
 
 public enum MatriculaPlano
@@ -8,3 +8,5 @@ public enum MatriculaPlano
     Semestral = 2,
     Anual = 3
 }
+
+//Aluno: Túlio Thauã Dutra

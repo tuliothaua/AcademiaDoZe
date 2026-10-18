@@ -11,3 +11,5 @@ public interface IAlunoService
     Task<bool> RemoverAsync(int id, CancellationToken cancellationToken = default);
     Task<AlunoDto?> ObterPorCpfAsync(string cpf, CancellationToken cancellationToken = default);
 }
+
+//Aluno: Túlio Thauã Dutra

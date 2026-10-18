@@ -122,9 +122,18 @@ public static class ConfigurationHelper
         services.AddTransient<ViewModels.DashboardViewModel>();
         services.AddTransient<ViewModels.LogradouroListViewModel>();
         services.AddTransient<ViewModels.LogradouroFormViewModel>();
+        services.AddTransient<ViewModels.AlunoListViewModel>();
+        services.AddTransient<ViewModels.AlunoFormViewModel>();
+        services.AddTransient<ViewModels.ColaboradorListViewModel>();
+        services.AddTransient<ViewModels.ColaboradorFormViewModel>();
         services.AddTransient<Views.DashboardPage>();
         services.AddTransient<Views.LogradouroListPage>();
         services.AddTransient<Views.LogradouroFormPage>();
+        services.AddTransient<Views.AlunoListPage>();
+        services.AddTransient<Views.AlunoFormPage>();
+        services.AddTransient<Views.ColaboradorListPage>();
+        services.AddTransient<Views.ColaboradorFormPage>();
         services.AddTransient<Views.ConfigPage>();
     }
 }
+//Aluno: Túlio Thauã Dutra

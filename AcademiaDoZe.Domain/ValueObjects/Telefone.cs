@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using System.Linq;
 using AcademiaDoZe.Domain.Common;
 
@@ -35,3 +35,5 @@ public record Telefone
 
     public override string ToString() => Numero;
 }
+
+//Aluno: Túlio Thauã Dutra

@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 namespace AcademiaDoZe.Domain.Entities;
 
 public abstract class Entity
@@ -12,3 +12,5 @@ public abstract class Entity
         Id = id;
     }
 }
+
+//Aluno: Túlio Thauã Dutra

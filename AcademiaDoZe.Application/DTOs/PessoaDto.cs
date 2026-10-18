@@ -14,3 +14,5 @@ public abstract class PessoaDto
     public string? Senha { get; set; }
     public ArquivoDto? Foto { get; set; }
 }
+
+//Aluno: Túlio Thauã Dutra

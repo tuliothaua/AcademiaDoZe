@@ -72,3 +72,5 @@ public sealed class DashboardViewModel : BaseViewModel
     private static async Task OpenLogradourosAsync() =>
         await Shell.Current.GoToAsync("//logradouros");
 }
+
+//Aluno: Túlio Thauã Dutra

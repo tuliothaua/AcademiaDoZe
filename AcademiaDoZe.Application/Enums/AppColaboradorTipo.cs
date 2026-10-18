@@ -8,3 +8,5 @@ public enum AppColaboradorTipo
     [Display(Name = "Atendente")] Atendente = 1,
     [Display(Name = "Instrutor")] Instrutor = 2
 }
+
+//Aluno: Túlio Thauã Dutra

@@ -17,10 +17,16 @@ public partial class AppShell : Shell
             () => services.GetRequiredService<DashboardPage>()));
         Items.Add(CriarItem("Logradouros", "logradouros", "location.png",
             () => services.GetRequiredService<LogradouroListPage>()));
+        Items.Add(CriarItem("Alunos", "alunos", "dashboard.png",
+            () => services.GetRequiredService<AlunoListPage>()));
+        Items.Add(CriarItem("Colaboradores", "colaboradores", "database.png",
+            () => services.GetRequiredService<ColaboradorListPage>()));
         Items.Add(CriarItem("Configurações", "configuracoes", "settings.png",
             () => services.GetRequiredService<ConfigPage>()));
 
         Routing.RegisterRoute("logradouro-form", typeof(LogradouroFormPage));
+        Routing.RegisterRoute("aluno-form", typeof(AlunoFormPage));
+        Routing.RegisterRoute("colaborador-form", typeof(ColaboradorFormPage));
     }
 
     private static FlyoutItem CriarItem(string title, string route, string icon, Func<Page> pageFactory)
@@ -56,3 +62,4 @@ public partial class AppShell : Shell
         }
     };
 }
+//Aluno: Túlio Thauã Dutra

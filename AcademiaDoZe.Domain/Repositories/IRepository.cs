@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.Common;
 using AcademiaDoZe.Domain.Entities;
 
@@ -24,3 +24,5 @@ public interface IRepository<TEntity>
         TEntity entidade,
         CancellationToken cancellationToken = default);
 }
+
+//Aluno: Túlio Thauã Dutra

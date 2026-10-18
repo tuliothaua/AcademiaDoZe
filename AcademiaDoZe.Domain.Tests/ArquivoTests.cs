@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.ValueObjects;
 using Xunit;
 
@@ -52,3 +52,5 @@ public class ArquivoTests
         Assert.Equal("Arquivo(3 bytes)", resultado.Value!.ToString());
     }
 }
+
+//Aluno: Túlio Thauã Dutra

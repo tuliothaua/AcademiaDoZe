@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using System.Text.RegularExpressions;
 using System.Linq;
 
@@ -20,3 +20,5 @@ public static partial class NormalizadoService
     [GeneratedRegex(@"\s+")]
     private static partial Regex EspacosRegex();
 }
+
+//Aluno: Túlio Thauã Dutra

@@ -145,3 +145,5 @@ public partial class ConfigPage : ContentPage
         await Shell.Current.GoToAsync("//dashboard");
     }
 }
+
+//Aluno: Túlio Thauã Dutra

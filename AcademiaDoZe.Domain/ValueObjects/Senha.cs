@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.Common;
 
 namespace AcademiaDoZe.Domain.ValueObjects;
@@ -28,3 +28,5 @@ public record Senha
         return Result<Senha>.Success(new Senha(valor));
     }
 }
+
+//Aluno: Túlio Thauã Dutra

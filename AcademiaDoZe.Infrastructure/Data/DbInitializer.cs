@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Infrastructure.Exceptions;
 using Microsoft.Data.SqlClient;
 using System.Collections.Concurrent;
@@ -87,3 +87,5 @@ public static class DbInitializer
         return reader.ReadToEnd();
     }
 }
+
+//Aluno: Túlio Thauã Dutra

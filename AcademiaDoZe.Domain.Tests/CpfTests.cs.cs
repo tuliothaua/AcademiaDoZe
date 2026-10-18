@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.ValueObjects;
 
 namespace AcademiaDoZe.Domain.Tests;
@@ -44,3 +44,5 @@ public class CpfTests
     }
 
 }
+
+//Aluno: Túlio Thauã Dutra

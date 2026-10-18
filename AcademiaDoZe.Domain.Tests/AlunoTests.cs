@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.Entities;
 using AcademiaDoZe.Domain.ValueObjects;
 using Xunit;
@@ -104,3 +104,5 @@ public class AlunoTests
         Assert.True(resultado.Notifications.Count >= 3);
     }
 }
+
+//Aluno: Túlio Thauã Dutra

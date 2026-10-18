@@ -19,3 +19,5 @@ internal sealed class ServiceRouteFactory<TPage> : RouteFactory
 
     public override Element GetOrCreate(IServiceProvider services) => (services ?? _services).GetRequiredService<TPage>();
 }
+
+//Aluno: Túlio Thauã Dutra

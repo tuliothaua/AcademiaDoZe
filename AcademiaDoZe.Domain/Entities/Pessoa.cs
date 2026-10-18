@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.ValueObjects;
 
 namespace AcademiaDoZe.Domain.Entities;
@@ -40,3 +40,5 @@ public abstract class Pessoa : Entity
         Complemento = complemento;
     }
 }
+
+//Aluno: Túlio Thauã Dutra

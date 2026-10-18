@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.Entities;
 using AcademiaDoZe.Domain.Enums;
 using Xunit;
@@ -63,3 +63,5 @@ public class MatriculaTests
         Assert.Contains(resultado.Notifications, n => n.Mensagem == "DATA_INICIO_OBRIGATORIA");
     }
 }
+
+//Aluno: Túlio Thauã Dutra

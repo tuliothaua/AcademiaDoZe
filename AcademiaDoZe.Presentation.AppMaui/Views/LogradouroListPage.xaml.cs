@@ -20,3 +20,5 @@ public partial class LogradouroListPage : ContentPage
         await _viewModel.LoadCommand.ExecuteAsync();
     }
 }
+
+//Aluno: Túlio Thauã Dutra

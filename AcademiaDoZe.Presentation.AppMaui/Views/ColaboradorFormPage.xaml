@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+             x:Class="AcademiaDoZe.Presentation.AppMaui.Views.ColaboradorFormPage"
+             x:DataType="vm:ColaboradorFormViewModel"
+             Title="{Binding Title}">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="12">
+            <Label Text="Dados do colaborador" FontSize="22" FontAttributes="Bold" />
+
+            <Border Padding="16" Stroke="{AppThemeBinding Light=#DCE4EA, Dark=#3A4652}" StrokeShape="RoundRectangle 16" BackgroundColor="{AppThemeBinding Light=White, Dark=#202B36}">
+                <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <Image Source="{Binding FotoPreview}" WidthRequest="150" HeightRequest="150" Aspect="AspectFill" />
+                    <Button Text="Escolher foto (galeria ou câmera)" Command="{Binding SelecionarFotoCommand}" />
+                    <Label Text="A foto será armazenada no banco de dados. Limite: 8 MB." FontSize="12" HorizontalTextAlignment="Center" TextColor="{AppThemeBinding Light=#667085, Dark=#A8B3BF}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label Text="Nome completo" />
+            <Entry Text="{Binding Nome}" Placeholder="Nome do colaborador" ClearButtonVisibility="WhileEditing" />
+            <Label Text="CPF" />
+            <Entry Text="{Binding Cpf}" Placeholder="000.000.000-00" Keyboard="Numeric" MaxLength="14" />
+            <Label Text="Data de nascimento" />
+            <DatePicker Date="{Binding DataNascimento}" MaximumDate="{Binding DataMaximaNascimento}" />
+            <Label Text="Telefone com DDD" />
+            <Entry Text="{Binding Telefone}" Placeholder="(00) 00000-0000" Keyboard="Telephone" />
+            <Label Text="E-mail" />
+            <Entry Text="{Binding Email}" Placeholder="colaborador@exemplo.com" Keyboard="Email" />
+
+            <Label Text="Cargo" />
+            <Picker Title="Selecione o cargo" ItemsSource="{Binding TiposColaborador}" SelectedItem="{Binding TipoSelecionado, Mode=TwoWay}" />
+            <Label Text="Vínculo" />
+            <Picker Title="Selecione o vínculo" ItemsSource="{Binding Vinculos}" SelectedItem="{Binding VinculoSelecionado, Mode=TwoWay}" />
+            <Label Text="Data de admissão" />
+            <DatePicker Date="{Binding DataAdmissao}" MaximumDate="{Binding DataMaximaAdmissao}" />
+
+            <Label Text="Logradouro" />
+            <Picker Title="Selecione um endereço já cadastrado" ItemsSource="{Binding Enderecos}" ItemDisplayBinding="{Binding Nome}" SelectedItem="{Binding EnderecoSelecionado, Mode=TwoWay}" />
+            <Label Text="Não há endereço disponível? Cadastre um logradouro antes de continuar." FontSize="12" TextColor="{AppThemeBinding Light=#667085, Dark=#A8B3BF}" />
+            <Button Text="Abrir cadastro de logradouros" Command="{Binding AbrirLogradourosCommand}" />
+            <Label Text="Número" />
+            <Entry Text="{Binding Numero}" Placeholder="Número" Keyboard="Numeric" />
+            <Label Text="Complemento (opcional)" />
+            <Entry Text="{Binding Complemento}" Placeholder="Sala, bloco etc." />
+
+            <Label Text="Senha (obrigatória no cadastro; deixe em branco ao editar para mantê-la)" FontSize="13" />
+            <Entry Text="{Binding Senha}" Placeholder="Mínimo de 6 caracteres" IsPassword="True" />
+            <Label Text="Confirmar senha" />
+            <Entry Text="{Binding ConfirmarSenha}" Placeholder="Confirme a senha" IsPassword="True" />
+
+            <HorizontalStackLayout Spacing="10" Margin="0,12,0,20">
+                <Button Text="Salvar" Command="{Binding SalvarCommand}" HorizontalOptions="FillAndExpand" />
+                <Button Text="Cancelar" Command="{Binding CancelarCommand}" BackgroundColor="{AppThemeBinding Light=#667085, Dark=#475467}" HorizontalOptions="FillAndExpand" />
+            </HorizontalStackLayout>
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+<!-- //Aluno: Túlio Thauã Dutra -->

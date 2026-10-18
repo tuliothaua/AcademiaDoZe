@@ -1,4 +1,4 @@
-﻿-- Nome: Túlio Thauã Dutra
+-- Nome: Túlio Thauã Dutra
 -- SCRIPT CRIAÇÃO DO BANCO DE DADOS: db_academia
 -- Baseado na camada de dominio AcademiaDoZe.Domain
 
@@ -95,3 +95,5 @@ BEGIN
     CREATE INDEX IX_tb_acesso_pessoa ON tb_acesso(pessoa_tipo, pessoa_id);
     CREATE INDEX IX_tb_acesso_data_hora ON tb_acesso(data_hora);
 END;
+
+-- //Aluno: Túlio Thauã Dutra

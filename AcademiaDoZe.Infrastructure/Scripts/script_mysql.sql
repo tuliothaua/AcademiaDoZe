@@ -1,4 +1,4 @@
-﻿-- Nome: Túlio Thauã Dutra
+-- Nome: Túlio Thauã Dutra
 -- SCRIPT DE CRIAÇÃO DO BANCO DE DADOS: db_academia_do_ze (MySQL / MariaDB)
 
 CREATE TABLE IF NOT EXISTS tb_logradouro (
@@ -82,3 +82,5 @@ CREATE TABLE IF NOT EXISTS tb_acesso (
     INDEX ix_tb_acesso_pessoa (pessoa_tipo, pessoa_id),
     INDEX ix_tb_acesso_data_hora (data_hora)
 ) ENGINE=InnoDB;
+
+-- //Aluno: Túlio Thauã Dutra

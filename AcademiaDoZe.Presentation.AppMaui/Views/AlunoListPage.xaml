@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+             xmlns:dto="clr-namespace:AcademiaDoZe.Application.DTOs;assembly=AcademiaDoZe.Application"
+             xmlns:converters="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Converters"
+             x:Class="AcademiaDoZe.Presentation.AppMaui.Views.AlunoListPage"
+             x:DataType="vm:AlunoListViewModel"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <converters:FotoToImageSourceConverter x:Key="FotoConverter" />
+        <DataTemplate x:Key="AlunoCard" x:DataType="dto:AlunoDto">
+            <Border Margin="8" Padding="14" Stroke="{AppThemeBinding Light=#DCE4EA, Dark=#3A4652}" StrokeShape="RoundRectangle 16" BackgroundColor="{AppThemeBinding Light=White, Dark=#202B36}">
+                <Grid ColumnDefinitions="96,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnSpacing="14" RowSpacing="5">
+                    <Image Grid.Row="0" Grid.RowSpan="5" Grid.Column="0" Source="{Binding Foto, Converter={StaticResource FotoConverter}}" WidthRequest="92" HeightRequest="112" Aspect="AspectFill" VerticalOptions="Center" />
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Nome}" FontSize="17" FontAttributes="Bold" LineBreakMode="TailTruncation" />
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Cpf, StringFormat='CPF: {0}'}" />
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding Telefone, StringFormat='Telefone: {0}'}" />
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding Email, StringFormat='E-mail: {0}'}" LineBreakMode="TailTruncation" />
+                    <HorizontalStackLayout Grid.Row="4" Grid.Column="1" Spacing="8">
+                        <Button Text="Editar" Clicked="OnEditButtonClicked" Padding="12,6" MinimumHeightRequest="38" />
+                        <Button Text="Excluir" Clicked="OnDeleteButtonClicked" Padding="12,6" MinimumHeightRequest="38" BackgroundColor="#B42318" TextColor="White" />
+                    </HorizontalStackLayout>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*">
+        <Border Grid.Row="0" Margin="14,12" Padding="12" Stroke="{AppThemeBinding Light=#DCE4EA, Dark=#3A4652}" StrokeShape="RoundRectangle 14" BackgroundColor="{AppThemeBinding Light=White, Dark=#202B36}">
+            <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8">
+                <Entry Grid.Column="0" Text="{Binding CpfBusca}" Placeholder="Filtrar por CPF (11 dígitos)" Keyboard="Numeric" MaxLength="14" ReturnCommand="{Binding SearchCommand}" ClearButtonVisibility="WhileEditing" />
+                <Button Grid.Column="1" Text="Buscar" Command="{Binding SearchCommand}" Padding="14,8" />
+                <Button Grid.Column="2" Text="Limpar" Command="{Binding ClearCommand}" Padding="14,8" />
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <CollectionView ItemsSource="{Binding Alunos}" SelectionMode="None" Margin="8">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical">
+                        <GridItemsLayout.Span>
+                            <OnIdiom x:TypeArguments="x:Int32">
+                                <OnIdiom.Phone>1</OnIdiom.Phone>
+                                <OnIdiom.Tablet>2</OnIdiom.Tablet>
+                                <OnIdiom.Desktop>3</OnIdiom.Desktop>
+                                <OnIdiom.TV>4</OnIdiom.TV>
+                                <OnIdiom.Default>1</OnIdiom.Default>
+                            </OnIdiom>
+                        </GridItemsLayout.Span>
+                    </GridItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout Spacing="12" HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
+                        <Label Text="Nenhum aluno encontrado." HorizontalTextAlignment="Center" FontSize="18" />
+                        <Button Text="Cadastrar aluno" Command="{Binding AddCommand}" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <StaticResource Key="AlunoCard" />
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Text="+ Cadastrar aluno" Command="{Binding AddCommand}" HorizontalOptions="End" VerticalOptions="End" Margin="20" />
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+    </Grid>
+</ContentPage>
+<!-- //Aluno: Túlio Thauã Dutra -->

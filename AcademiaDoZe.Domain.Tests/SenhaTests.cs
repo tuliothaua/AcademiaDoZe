@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.ValueObjects;
 using Xunit;
 
@@ -46,3 +46,5 @@ public class SenhaTests
     [Fact]
     public void DeveManterASenhaOriginal() { }
 }
+
+//Aluno: Túlio Thauã Dutra

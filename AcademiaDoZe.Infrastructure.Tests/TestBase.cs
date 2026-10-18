@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Infrastructure.Data;
 using System.Threading;
 using Xunit;
@@ -48,3 +48,5 @@ public abstract class TestBase
 
     #endregion
 }
+
+//Aluno: Túlio Thauã Dutra

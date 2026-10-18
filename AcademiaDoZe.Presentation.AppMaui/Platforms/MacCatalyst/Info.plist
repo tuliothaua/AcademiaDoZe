@@ -8,5 +8,7 @@
   <string>15.0</string>
   <key>NSHumanReadableCopyright</key>
   <string>© Túlio Thauã Dutra</string>
+  <key>NSCameraUsageDescription</key>
+  <string>O aplicativo usa a câmera para fotografar alunos e colaboradores durante o cadastro.</string>
 </dict>
 </plist>

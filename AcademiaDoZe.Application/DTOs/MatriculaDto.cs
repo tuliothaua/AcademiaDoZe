@@ -14,3 +14,5 @@ public class MatriculaDto
     public string? ObservacoesRestricoes { get; set; }
     public ArquivoDto? LaudoMedico { get; set; }
 }
+
+//Aluno: Túlio Thauã Dutra

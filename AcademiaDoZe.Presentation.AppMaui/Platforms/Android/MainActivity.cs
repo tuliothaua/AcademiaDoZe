@@ -12,3 +12,5 @@ namespace AcademiaDoZe.Presentation.AppMaui;
 public class MainActivity : MauiAppCompatActivity
 {
 }
+
+//Aluno: Túlio Thauã Dutra

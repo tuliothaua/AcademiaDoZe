@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.Common;
 
 namespace AcademiaDoZe.Domain.ValueObjects;
@@ -24,3 +24,5 @@ public record Arquivo
 
     public override string ToString() => $"Arquivo({Conteudo?.Length ?? 0} bytes)";
 }
+
+//Aluno: Túlio Thauã Dutra

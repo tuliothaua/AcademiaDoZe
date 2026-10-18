@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.ValueObjects;
 using Xunit;
 
@@ -44,3 +44,5 @@ public class EnderecoTests
         Assert.Equal("Rua A", resultado.Value!.ToString());
     }
 }
+
+//Aluno: Túlio Thauã Dutra
