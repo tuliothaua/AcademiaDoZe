@@ -16,5 +16,7 @@
   </array>
   <key>MinimumOSVersion</key>
   <string>15.0</string>
+  <key>NSCameraUsageDescription</key>
+  <string>O aplicativo usa a câmera para fotografar alunos e colaboradores durante o cadastro.</string>
 </dict>
 </plist>

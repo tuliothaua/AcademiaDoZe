@@ -1,4 +1,4 @@
-using AcademiaDoZe.Domain.Entities;
+﻿using AcademiaDoZe.Domain.Entities;
 using AcademiaDoZe.Domain.Enums;
 using AcademiaDoZe.Domain.Repositories;
 using AcademiaDoZe.Domain.ValueObjects;
@@ -184,7 +184,7 @@ public class ColaboradorRepository : BaseRepository, IColaboradorRepository
     {
         var cpfResult = Cpf.Criar(cpf);
         if (cpfResult.IsFailure) return null;
-        return await ObterPorCpf(cpfResult.Value, cancellationToken);
+        return await ObterPorCpf(cpfResult.Value!, cancellationToken);
     }
 
     public Task<Colaborador?> ObterPorEmail(Email email, CancellationToken cancellationToken = default) =>
@@ -312,3 +312,5 @@ public class ColaboradorRepository : BaseRepository, IColaboradorRepository
         }
     }
 }
+
+//Aluno: Túlio Thauã Dutra

@@ -8,3 +8,5 @@ public class ColaboradorDto : PessoaDto
     public AppColaboradorTipo Tipo { get; set; }
     public AppColaboradorVinculo Vinculo { get; set; }
 }
+
+//Aluno: Túlio Thauã Dutra

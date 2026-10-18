@@ -7,3 +7,5 @@ public enum AppColaboradorVinculo
     [Display(Name = "CLT")] CLT = 0,
     [Display(Name = "Estagiário")] Estagio = 1
 }
+
+//Aluno: Túlio Thauã Dutra

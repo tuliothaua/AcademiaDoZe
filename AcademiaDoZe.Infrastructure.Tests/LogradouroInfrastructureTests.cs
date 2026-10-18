@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.Entities;
 using AcademiaDoZe.Domain.ValueObjects;
 using AcademiaDoZe.Infrastructure.Data;
@@ -233,3 +233,5 @@ public class LogradouroInfrastructureTests : TestBase
         Assert.Empty(resultadosVazio);
     }
 }
+
+//Aluno: Túlio Thauã Dutra

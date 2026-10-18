@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.Services;
 using Xunit;
 
@@ -50,3 +50,5 @@ public class NormalizadoServiceTests
         Assert.Equal(esperado, NormalizadoService.ParaMaiusculo(texto));
     }
 }
+
+//Aluno: Túlio Thauã Dutra

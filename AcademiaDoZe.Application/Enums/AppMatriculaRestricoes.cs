@@ -12,3 +12,5 @@ public enum AppMatriculaRestricoes
     [Display(Name = "Alergias")] Alergias = 8,
     [Display(Name = "Problemas Respiratórios")] ProblemasRespiratorios = 16
 }
+
+//Aluno: Túlio Thauã Dutra

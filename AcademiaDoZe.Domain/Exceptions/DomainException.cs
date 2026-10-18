@@ -1,4 +1,6 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 namespace AcademiaDoZe.Domain.Exceptions;
 
 public sealed class DomainException(string message) : Exception(message);
+
+//Aluno: Túlio Thauã Dutra

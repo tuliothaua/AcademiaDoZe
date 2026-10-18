@@ -20,4 +20,7 @@
                           Square150x150Logo="appicon.png" Square44x44Logo="appicon.png" BackgroundColor="#173653" />
     </Application>
   </Applications>
+  <Capabilities>
+    <DeviceCapability Name="webcam" />
+  </Capabilities>
 </Package>

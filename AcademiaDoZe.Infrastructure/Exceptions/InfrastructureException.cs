@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using System;
 
 namespace AcademiaDoZe.Infrastructure.Exceptions;
@@ -32,3 +32,5 @@ public class InfrastructureException : Exception
         return $"[{Timestamp:yyyy-MM-dd HH:mm:ss UTC}]{codeInfo} {base.ToString()}";
     }
 }
+
+//Aluno: Túlio Thauã Dutra

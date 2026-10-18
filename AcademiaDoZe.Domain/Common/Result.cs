@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,3 +21,5 @@ public class Result<T>
     public static Result<T> Failure(IEnumerable<Notification> notifications) => new(default, notifications);
     public static Result<T> Failure(string propriedade, string mensagem) => new(default, [new Notification(propriedade, mensagem)]);
 }
+
+//Aluno: Túlio Thauã Dutra

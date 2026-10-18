@@ -5,3 +5,5 @@ namespace AcademiaDoZe.Presentation.AppMaui.Message;
 public sealed class BancoPreferencesUpdatedMessage(string value) : ValueChangedMessage<string>(value)
 {
 }
+
+//Aluno: Túlio Thauã Dutra

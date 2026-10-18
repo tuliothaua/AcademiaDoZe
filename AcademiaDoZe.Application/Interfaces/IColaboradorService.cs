@@ -11,3 +11,5 @@ public interface IColaboradorService
     Task<bool> RemoverAsync(int id, CancellationToken cancellationToken = default);
     Task<ColaboradorDto?> ObterPorCpfAsync(string cpf, CancellationToken cancellationToken = default);
 }
+
+//Aluno: Túlio Thauã Dutra

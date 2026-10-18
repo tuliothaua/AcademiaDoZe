@@ -40,3 +40,5 @@ public static class PasswordHasher
         catch { return false; }
     }
 }
+
+//Aluno: Túlio Thauã Dutra

@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.ValueObjects;
 using Xunit;
 
@@ -60,3 +60,5 @@ public class EmailTests
         Assert.Equal("aluno@academia.com", resultado.Value!.ToString());
     }
 }
+
+//Aluno: Túlio Thauã Dutra

@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.Common;
 using AcademiaDoZe.Domain.Enums;
 using AcademiaDoZe.Domain.ValueObjects;
@@ -49,3 +49,5 @@ public class Matricula : Entity, IAggregateRoot
         return Result<Matricula>.Success(new Matricula(id, aluno!, plano, dataInicio, dataFim, objetivo, restricoes, observacoes, laudo));
     }
 }
+
+//Aluno: Túlio Thauã Dutra

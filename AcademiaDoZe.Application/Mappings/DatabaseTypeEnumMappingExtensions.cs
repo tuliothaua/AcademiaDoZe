@@ -9,3 +9,5 @@ public static class DatabaseTypeEnumMappingExtensions
 
     public static AppDatabaseType ToApplication(this DatabaseType databaseType) => (AppDatabaseType)databaseType;
 }
+
+//Aluno: Túlio Thauã Dutra

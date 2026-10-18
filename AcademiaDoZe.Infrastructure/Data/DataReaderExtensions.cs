@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using System.Data.Common;
 
 namespace AcademiaDoZe.Infrastructure.Data;
@@ -35,3 +35,5 @@ public static class DataReaderExtensions
         return DateOnly.FromDateTime(Convert.ToDateTime(reader[columnName]));
     }
 }
+
+//Aluno: Túlio Thauã Dutra

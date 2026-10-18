@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using System.Text.RegularExpressions;
 using AcademiaDoZe.Domain.Common;
 
@@ -36,3 +36,5 @@ public record Email
 
     public override string ToString() => Endereco;
 }
+
+//Aluno: Túlio Thauã Dutra

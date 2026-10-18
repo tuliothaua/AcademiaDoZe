@@ -33,7 +33,16 @@ public sealed class AlunoService : IAlunoService
     {
         ArgumentNullException.ThrowIfNull(dto);
         if (dto.Endereco is null) throw new ArgumentException("O endereço é obrigatório.", nameof(dto));
-        if (!string.IsNullOrWhiteSpace(dto.Senha)) dto.Senha = PasswordHasher.Hash(dto.Senha);
+        if (string.IsNullOrWhiteSpace(dto.Senha))
+        {
+            var atual = await _repository.ObterPorIdAsync(dto.Id, cancellationToken)
+                ?? throw new InvalidOperationException("O aluno não foi encontrado para atualização.");
+            dto.Senha = atual.Senha.Valor;
+        }
+        else
+        {
+            dto.Senha = PasswordHasher.Hash(dto.Senha);
+        }
         var entity = dto.ToEntity(dto.Endereco.ToEntity());
         await _repository.AtualizarAsync(entity, cancellationToken);
         return entity.ToDto();
@@ -50,3 +59,4 @@ public sealed class AlunoService : IAlunoService
     public async Task<AlunoDto?> ObterPorCpfAsync(string cpf, CancellationToken cancellationToken = default) =>
         (await _repository.ObterPorCpfAsync(cpf, cancellationToken))?.ToDto();
 }
+//Aluno: Túlio Thauã Dutra

@@ -1,4 +1,4 @@
-﻿using AcademiaDoZe.Infrastructure.Data;
+using AcademiaDoZe.Infrastructure.Data;
 using AcademiaDoZe.Infrastructure.Exceptions;
 using System.Data;
 using System.Data.Common;
@@ -118,3 +118,5 @@ public abstract class BaseRepository : IDisposable, IAsyncDisposable
         }
     }
 }
+
+//Aluno: Túlio Thauã Dutra

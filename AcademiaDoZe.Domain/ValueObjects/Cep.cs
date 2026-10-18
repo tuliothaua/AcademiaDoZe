@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.Common;
 
 namespace AcademiaDoZe.Domain.ValueObjects;
@@ -34,3 +34,5 @@ public record Cep
 
     public override string ToString() => Valor;
 }
+
+//Aluno: Túlio Thauã Dutra

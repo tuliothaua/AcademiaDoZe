@@ -38,3 +38,5 @@ public sealed class AsyncCommand : ICommand
 
     public async void Execute(object? parameter) => await ExecuteAsync(parameter);
 }
+
+//Aluno: Túlio Thauã Dutra

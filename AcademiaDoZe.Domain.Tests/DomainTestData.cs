@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.Entities;
 using AcademiaDoZe.Domain.Enums;
 using AcademiaDoZe.Domain.ValueObjects;
@@ -55,3 +55,5 @@ public static class DomainTestData
             ColaboradorVinculo.CLT).Value!;
     }
 }
+
+//Aluno: Túlio Thauã Dutra

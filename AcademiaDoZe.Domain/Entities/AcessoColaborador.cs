@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Domain.Common;
 using System.Collections.Generic;
 
@@ -31,3 +31,5 @@ public class AcessoColaborador : Entity, IAggregateRoot
         return Result<AcessoColaborador>.Success(new AcessoColaborador(id, colaborador!, dataHora));
     }
 }
+
+//Aluno: Túlio Thauã Dutra

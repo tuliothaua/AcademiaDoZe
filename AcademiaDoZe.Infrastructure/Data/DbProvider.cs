@@ -1,4 +1,4 @@
-﻿// Nome: Túlio Thauã Dutra
+// Nome: Túlio Thauã Dutra
 using AcademiaDoZe.Infrastructure.Exceptions;
 using Microsoft.Data.SqlClient;
 using Microsoft.Data.Sqlite;
@@ -191,3 +191,5 @@ public static class DbProvider
 
     #endregion
 }
+
+//Aluno: Túlio Thauã Dutra
