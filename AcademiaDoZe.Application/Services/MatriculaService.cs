@@ -27,6 +27,11 @@ public sealed class MatriculaService : IMatriculaService
         var alunoId = dto.AlunoMatricula?.Id ?? 0;
         var aluno = await _alunoRepository.ObterPorIdAsync(alunoId, cancellationToken)
             ?? throw new KeyNotFoundException($"Aluno {alunoId} não encontrado.");
+        var hoje = DateOnly.FromDateTime(DateTime.Today);
+        var possuiMatriculaAtiva = (await _repository.ObterPorAlunoAsync(alunoId, cancellationToken))
+            .Any(m => m.DataFim is null || m.DataFim.Value >= hoje);
+        if (possuiMatriculaAtiva)
+            throw new InvalidOperationException("Este aluno já possui uma matrícula ativa. Aguarde o vencimento antes de cadastrar outra.");
         var entity = dto.ToEntity(aluno);
         await _repository.AdicionarAsync(entity, cancellationToken);
         return entity.ToDto();
@@ -38,6 +43,11 @@ public sealed class MatriculaService : IMatriculaService
         var alunoId = dto.AlunoMatricula?.Id ?? 0;
         var aluno = await _alunoRepository.ObterPorIdAsync(alunoId, cancellationToken)
             ?? throw new KeyNotFoundException($"Aluno {alunoId} não encontrado.");
+        var hoje = DateOnly.FromDateTime(DateTime.Today);
+        var conflito = (await _repository.ObterPorAlunoAsync(alunoId, cancellationToken))
+            .Any(m => m.Id != dto.Id && (m.DataFim is null || m.DataFim.Value >= hoje));
+        if (conflito)
+            throw new InvalidOperationException("Este aluno já possui outra matrícula ativa.");
         var entity = dto.ToEntity(aluno);
         await _repository.AtualizarAsync(entity, cancellationToken);
         return entity.ToDto();

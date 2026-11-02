@@ -43,6 +43,16 @@ public class Matricula : Entity, IAggregateRoot
         if (dataInicio == default)
             notifications.Add(new Notification("DataInicio", "DATA_INICIO_OBRIGATORIA"));
 
+        if (aluno is not null && dataInicio != default)
+        {
+            var idade = dataInicio.Year - aluno.DataNascimento.Year;
+            if (aluno.DataNascimento.AddYears(idade) > dataInicio) idade--;
+            if (idade is >= 12 and <= 16 && laudo is null)
+                notifications.Add(new Notification("LaudoMedico", "LAUDO_MEDICO_OBRIGATORIO_POR_IDADE"));
+        }
+        if (restricoes != MatriculaRestricoes.None && laudo is null)
+            notifications.Add(new Notification("LaudoMedico", "LAUDO_MEDICO_OBRIGATORIO_POR_RESTRICAO"));
+
         if (notifications.Count > 0)
             return Result<Matricula>.Failure(notifications);
 
