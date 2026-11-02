@@ -1,4 +1,4 @@
-﻿using AcademiaDoZe.Presentation.AppMaui.Views;
+using AcademiaDoZe.Presentation.AppMaui.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls;
 
@@ -21,12 +21,15 @@ public partial class AppShell : Shell
             () => services.GetRequiredService<AlunoListPage>()));
         Items.Add(CriarItem("Colaboradores", "colaboradores", "database.png",
             () => services.GetRequiredService<ColaboradorListPage>()));
+        Items.Add(CriarItem("Matrículas", "matriculas", "database.png",
+            () => services.GetRequiredService<MatriculaListPage>()));
         Items.Add(CriarItem("Configurações", "configuracoes", "settings.png",
             () => services.GetRequiredService<ConfigPage>()));
 
         Routing.RegisterRoute("logradouro-form", typeof(LogradouroFormPage));
         Routing.RegisterRoute("aluno-form", typeof(AlunoFormPage));
         Routing.RegisterRoute("colaborador-form", typeof(ColaboradorFormPage));
+        Routing.RegisterRoute("matricula-form", typeof(MatriculaFormPage));
     }
 
     private static FlyoutItem CriarItem(string title, string route, string icon, Func<Page> pageFactory)

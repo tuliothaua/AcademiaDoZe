@@ -62,6 +62,22 @@ public class MatriculaTests
         var resultado = Matricula.Criar(1, DomainTestData.Aluno(), MatriculaPlano.Mensal, default, null, "Objetivo", MatriculaRestricoes.None, "", null);
         Assert.Contains(resultado.Notifications, n => n.Mensagem == "DATA_INICIO_OBRIGATORIA");
     }
+
+    [Fact]
+    public void DeveExigirLaudoParaRestricaoMedica()
+    {
+        var resultado = Matricula.Criar(1, DomainTestData.Aluno(), MatriculaPlano.Mensal, DateOnly.FromDateTime(DateTime.Today), null, "Objetivo", MatriculaRestricoes.Diabetes, "", null);
+        Assert.Contains(resultado.Notifications, n => n.Mensagem == "LAUDO_MEDICO_OBRIGATORIO_POR_RESTRICAO");
+    }
+
+    [Fact]
+    public void DeveExigirLaudoParaAlunoDeDezesseisAnos()
+    {
+        var nascimento = DateOnly.FromDateTime(DateTime.Today.AddYears(-16));
+        var aluno = Aluno.Criar(8, "Aluno Jovem", "12345678901", nascimento, "11987654321", "jovem@academia.com", "senha123", DomainTestData.Foto(), DomainTestData.Logradouro(), "10", "").Value!;
+        var resultado = Matricula.Criar(1, aluno, MatriculaPlano.Mensal, DateOnly.FromDateTime(DateTime.Today), null, "Objetivo", MatriculaRestricoes.None, "", null);
+        Assert.Contains(resultado.Notifications, n => n.Mensagem == "LAUDO_MEDICO_OBRIGATORIO_POR_IDADE");
+    }
 }
 
 //Aluno: Túlio Thauã Dutra

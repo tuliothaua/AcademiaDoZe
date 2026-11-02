@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+             xmlns:converters="clr-namespace:AcademiaDoZe.Presentation.AppMaui.Converters"
+             x:Class="AcademiaDoZe.Presentation.AppMaui.Views.MatriculaFormPage"
+             x:DataType="vm:MatriculaFormViewModel" Title="{Binding Title}">
+    <ContentPage.Resources>
+        <converters:FotoToImageSourceConverter x:Key="FotoConverter" />
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="12">
+            <Label Text="Dados da matrícula" FontSize="22" FontAttributes="Bold" />
+            <Label Text="Aluno" FontAttributes="Bold" />
+            <Picker Title="Selecione o aluno" ItemsSource="{Binding Alunos}" ItemDisplayBinding="{Binding Nome}" SelectedItem="{Binding AlunoSelecionado, Mode=TwoWay}" />
+            <Border Padding="12" Stroke="{AppThemeBinding Light=#DCE4EA, Dark=#3A4652}" StrokeShape="RoundRectangle 14" BackgroundColor="{AppThemeBinding Light=White, Dark=#202B36}">
+                <Grid ColumnDefinitions="100,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="12" RowSpacing="5">
+                    <Image Grid.Row="0" Grid.RowSpan="3" Source="{Binding AlunoSelecionado.Foto, Converter={StaticResource FotoConverter}}" WidthRequest="96" HeightRequest="112" Aspect="AspectFill" />
+                    <Label Grid.Column="1" Text="{Binding AlunoSelecionado.Nome, StringFormat='Nome: {0}'}" FontAttributes="Bold" />
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding AlunoSelecionado.Cpf, StringFormat='CPF: {0}'}" />
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding AlunoSelecionado.DataNascimento, StringFormat='Nascimento: {0:dd/MM/yyyy}'}" />
+                </Grid>
+            </Border>
+            <Label Text="Plano" FontAttributes="Bold" />
+            <Picker Title="Selecione o plano" ItemsSource="{Binding Planos}" SelectedItem="{Binding Plano, Mode=TwoWay}" />
+            <Label Text="Data de início" />
+            <DatePicker Date="{Binding DataInicio, Mode=TwoWay}" />
+            <Label Text="Data de fim (calculada automaticamente)" />
+            <DatePicker Date="{Binding DataFim, Mode=OneWay}" IsEnabled="False" />
+            <Label Text="Objetivo" />
+            <Entry Text="{Binding Objetivo}" Placeholder="Ex.: condicionamento, saúde, hipertrofia" />
+            <Label Text="Restrições médicas (selecione todas as aplicáveis)" FontAttributes="Bold" />
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto">
+                <CheckBox Grid.Row="0" Grid.Column="0" IsChecked="{Binding Diabetes}" /><Label Grid.Row="0" Grid.Column="0" Text="Diabetes" Margin="42,11,0,0" />
+                <CheckBox Grid.Row="0" Grid.Column="1" IsChecked="{Binding PressaoAlta}" /><Label Grid.Row="0" Grid.Column="1" Text="Pressão alta" Margin="42,11,0,0" />
+                <CheckBox Grid.Row="1" Grid.Column="0" IsChecked="{Binding Labirintite}" /><Label Grid.Row="1" Grid.Column="0" Text="Labirintite" Margin="42,11,0,0" />
+                <CheckBox Grid.Row="1" Grid.Column="1" IsChecked="{Binding Alergias}" /><Label Grid.Row="1" Grid.Column="1" Text="Alergias" Margin="42,11,0,0" />
+                <CheckBox Grid.Row="2" Grid.Column="0" IsChecked="{Binding ProblemasRespiratorios}" /><Label Grid.Row="2" Grid.Column="0" Text="Problemas respiratórios" Margin="42,11,0,0" />
+            </Grid>
+            <Label Text="Observações sobre saúde/restrições" />
+            <Editor Text="{Binding Observacoes}" Placeholder="Medicamentos contínuos, alergias e outras informações relevantes" AutoSize="TextChanges" />
+            <Label Text="Laudo/parecer médico" FontAttributes="Bold" />
+            <Button Text="Anexar laudo médico" Command="{Binding SelectLaudoCommand}" />
+            <Label Text="{Binding LaudoNome}" FontSize="12" />
+            <Label Text="Obrigatório para alunos de 12 a 16 anos e para alunos com restrições médicas." FontSize="12" TextColor="{AppThemeBinding Light=#667085, Dark=#A8B3BF}" />
+            <HorizontalStackLayout Spacing="10" Margin="0,12,0,20">
+                <Button Text="Salvar matrícula" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" />
+                <Button Text="Cancelar" Command="{Binding CancelCommand}" BackgroundColor="{AppThemeBinding Light=#667085, Dark=#475467}" HorizontalOptions="FillAndExpand" />
+            </HorizontalStackLayout>
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
