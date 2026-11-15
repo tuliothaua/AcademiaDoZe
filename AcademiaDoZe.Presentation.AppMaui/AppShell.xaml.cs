@@ -23,6 +23,8 @@ public partial class AppShell : Shell
             () => services.GetRequiredService<ColaboradorListPage>()));
         Items.Add(CriarItem("Matrículas", "matriculas", "database.png",
             () => services.GetRequiredService<MatriculaListPage>()));
+        Items.Add(CriarItem("Entrada e saída", "controle-acesso", "dashboard.png",
+            () => services.GetRequiredService<ControleAcessoPage>()));
         Items.Add(CriarItem("Configurações", "configuracoes", "settings.png",
             () => services.GetRequiredService<ConfigPage>()));
 

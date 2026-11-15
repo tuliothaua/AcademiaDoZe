@@ -8,3 +8,5 @@ A atividade 10 implementa configurações de tema e banco, além de identidade v
 
 
 A atividade 11 implementa CRUD de Alunos e Colaboradores com fotos. Consulte [README_ATIVIDADE_11.md](README_ATIVIDADE_11.md) para executar e preparar a demonstração/entrega.
+
+A DevAval03 implementa Entrada/Saída de Alunos e Colaboradores. Consulte [README_ATIVIDADE_03.md](README_ATIVIDADE_03.md) para testar e seguir o roteiro do vídeo/entrega.

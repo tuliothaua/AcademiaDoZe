@@ -16,10 +16,13 @@ public static class ApplicationDependencyInjection
         services.AddTransient<IAlunoRepository>(sp => new AlunoRepository(() => (config.ConnectionString, config.DatabaseType)));
         services.AddTransient<IColaboradorRepository>(sp => new ColaboradorRepository(() => (config.ConnectionString, config.DatabaseType)));
         services.AddTransient<IMatriculaRepository>(sp => new MatriculaRepository(() => (config.ConnectionString, config.DatabaseType)));
+        services.AddTransient<IAcessoAlunoRepository>(sp => new AcessoAlunoRepository(() => (config.ConnectionString, config.DatabaseType)));
+        services.AddTransient<IAcessoColaboradorRepository>(sp => new AcessoColaboradorRepository(() => (config.ConnectionString, config.DatabaseType)));
         services.AddTransient<ILogradouroService, LogradouroService>();
         services.AddTransient<IAlunoService, AlunoService>();
         services.AddTransient<IColaboradorService, ColaboradorService>();
         services.AddTransient<IMatriculaService, MatriculaService>();
+        services.AddTransient<IControleAcessoService, ControleAcessoService>();
         return services;
     }
 }
