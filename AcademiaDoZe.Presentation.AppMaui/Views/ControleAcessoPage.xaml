@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+             xmlns:dto="clr-namespace:AcademiaDoZe.Application.DTOs;assembly=AcademiaDoZe.Application"
+             x:Class="AcademiaDoZe.Presentation.AppMaui.Views.ControleAcessoPage"
+             x:DataType="vm:ControleAcessoViewModel"
+             Title="Entrada e saída"
+             BackgroundColor="{AppThemeBinding Light=#F4F7FB, Dark=#101923}">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Label Text="Controle de acesso" FontSize="28" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#173653, Dark=#F1F5F9}" />
+            <Label Text="Registre chegada e saída de alunos e colaboradores. Os registros incluem data e hora." FontSize="14" TextColor="{AppThemeBinding Light=#667085, Dark=#A9B4C2}" />
+
+            <Border Padding="18" Stroke="#DCE4EA" StrokeShape="RoundRectangle 18" BackgroundColor="{AppThemeBinding Light=White, Dark=#182534}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="ALUNO" FontSize="13" FontAttributes="Bold" TextColor="#149A98" />
+                    <Picker Title="Selecione o aluno (nome completo)" ItemsSource="{Binding Alunos}" ItemDisplayBinding="{Binding Nome}" SelectedItem="{Binding AlunoSelecionado}" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <Button Grid.Column="0" Text="Registrar entrada" Command="{Binding EntradaAlunoCommand}" BackgroundColor="#149A98" TextColor="White" CornerRadius="12" />
+                        <Button Grid.Column="1" Text="Registrar saída" Command="{Binding SaidaAlunoCommand}" BackgroundColor="#173653" TextColor="White" CornerRadius="12" />
+                    </Grid>
+                    <Label Text="A entrada exige matrícula ativa; a saída mostra a permanência da visita." FontSize="12" TextColor="{AppThemeBinding Light=#667085, Dark=#A9B4C2}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Padding="18" Stroke="#DCE4EA" StrokeShape="RoundRectangle 18" BackgroundColor="{AppThemeBinding Light=White, Dark=#182534}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="COLABORADOR" FontSize="13" FontAttributes="Bold" TextColor="#149A98" />
+                    <Picker Title="Selecione o colaborador (nome completo)" ItemsSource="{Binding Colaboradores}" ItemDisplayBinding="{Binding Nome}" SelectedItem="{Binding ColaboradorSelecionado}" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <Button Grid.Column="0" Text="Registrar entrada" Command="{Binding EntradaColaboradorCommand}" BackgroundColor="#149A98" TextColor="White" CornerRadius="12" />
+                        <Button Grid.Column="1" Text="Registrar saída" Command="{Binding SaidaColaboradorCommand}" BackgroundColor="#173653" TextColor="White" CornerRadius="12" />
+                    </Grid>
+                    <Label Text="Limite diário: 8 horas para CLT e 6 horas para estágio; total diário é somado." FontSize="12" TextColor="{AppThemeBinding Light=#667085, Dark=#A9B4C2}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Padding="16" Stroke="#B7E4DF" StrokeShape="RoundRectangle 14" BackgroundColor="{AppThemeBinding Light=#E8F7F4, Dark=#12312F}">
+                <Label Text="{Binding Mensagem}" FontSize="14" TextColor="{AppThemeBinding Light=#173653, Dark=#F1F5F9}" />
+            </Border>
+            <Button Text="Atualizar lista de pessoas" Command="{Binding AtualizarCommand}" BackgroundColor="{AppThemeBinding Light=White, Dark=#182534}" TextColor="{AppThemeBinding Light=#173653, Dark=#F1F5F9}" BorderColor="#D5DEE8" BorderWidth="1" CornerRadius="12" />
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

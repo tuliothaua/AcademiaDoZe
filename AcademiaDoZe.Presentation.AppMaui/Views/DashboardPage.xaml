@@ -25,7 +25,7 @@
                                    TextColor="{AppThemeBinding Light=#173653, Dark=#F1F5F9}" />
                             <Label Text="Sistema de gestão da Academia do Zé" FontSize="14"
                                    TextColor="{AppThemeBinding Light=#667085, Dark=#A9B4C2}" />
-                            <Label Text="Acompanhe os cadastros e acesse a área de Logradouros." FontSize="13"
+                            <Label Text="Acesse cadastros, matrículas e o controle de entrada/saída." FontSize="13"
                                    TextColor="{AppThemeBinding Light=#667085, Dark=#A9B4C2}" />
                         </VerticalStackLayout>
                     </Grid>
@@ -64,6 +64,9 @@
 
                 <Button Text="Abrir Logradouros" ImageSource="location.png" Command="{Binding OpenLogradourosCommand}"
                         BackgroundColor="#149A98" TextColor="{AppThemeBinding Light={StaticResource Black}, Dark=White}" FontSize="16" FontAttributes="Bold"
+                        CornerRadius="14" HeightRequest="54" />
+                <Button Text="Controle de entrada e saída" ImageSource="dashboard.png" Clicked="OnOpenControleAcessoClicked"
+                        BackgroundColor="#173653" TextColor="White" FontSize="16" FontAttributes="Bold"
                         CornerRadius="14" HeightRequest="54" />
                 <Button Text="Atualizar Dashboard" ImageSource="dashboard.png" Command="{Binding LoadCommand}"
                         BackgroundColor="{AppThemeBinding Light=White, Dark=#182534}"

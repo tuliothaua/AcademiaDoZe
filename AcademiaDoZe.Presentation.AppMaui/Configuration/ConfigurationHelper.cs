@@ -128,6 +128,7 @@ public static class ConfigurationHelper
         services.AddTransient<ViewModels.ColaboradorFormViewModel>();
         services.AddTransient<ViewModels.MatriculaListViewModel>();
         services.AddTransient<ViewModels.MatriculaFormViewModel>();
+        services.AddTransient<ViewModels.ControleAcessoViewModel>();
         services.AddTransient<Views.DashboardPage>();
         services.AddTransient<Views.LogradouroListPage>();
         services.AddTransient<Views.LogradouroFormPage>();
@@ -137,6 +138,7 @@ public static class ConfigurationHelper
         services.AddTransient<Views.ColaboradorFormPage>();
         services.AddTransient<Views.MatriculaListPage>();
         services.AddTransient<Views.MatriculaFormPage>();
+        services.AddTransient<Views.ControleAcessoPage>();
         services.AddTransient<Views.ConfigPage>();
     }
 }

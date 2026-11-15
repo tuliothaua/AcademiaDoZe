@@ -19,6 +19,9 @@ public partial class DashboardPage : ContentPage
         base.OnAppearing();
         await _viewModel.LoadCommand.ExecuteAsync();
     }
+
+    private async void OnOpenControleAcessoClicked(object sender, EventArgs e) =>
+        await Shell.Current.GoToAsync("//controle-acesso");
 }
 
 //Aluno: Túlio Thauã Dutra
